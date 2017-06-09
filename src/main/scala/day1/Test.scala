@@ -10,5 +10,9 @@ object Test {
     println("Hello,World!")
 
     val usr1 = new User
+
+    val point1 = new Point(2, 3)
+    println(point1.x)
+    println(point1)
   }
 }
