@@ -11,7 +11,7 @@ object Contravariance extends App {
     printer.print(myCat)
   }
 
-  val catPrinter: Printer[Cat] = new Printer[Cat]
+  val catPrinter: Printer[Cat] = new CatPrinter
 
   val animalPrinter: Printer[Animal] = new AnimalPrinter
   //因为Cat是Animal的子类,当Printer[-A]是逆变时，Printer[Animal]自然是Printer[Cat]子类，所以
