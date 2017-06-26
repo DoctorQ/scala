@@ -1,5 +1,7 @@
 package day14
 
+import scala.collection.mutable.ArrayBuffer
+
 
 /**
   * Created by doctorq on 2017/6/19.
@@ -18,9 +20,12 @@ object HeapSort extends App {
     * @return 符合堆结构的数组
     */
   def generateHeap(unSortHeap: Array[Int]): Array[Int] = {
+    val num = unSortHeap.length
+    if (num <= 1) return unSortHeap
     var tempUnSortHeap = unSortHeap
-    val num = tempUnSortHeap.length
-    for (i <- 0 until num) {
+
+
+    for (i <- num / 2 - 1 until num) {
       tempUnSortHeap = sort(tempUnSortHeap, i)
     }
     tempUnSortHeap
@@ -35,19 +40,19 @@ object HeapSort extends App {
     */
   def sort(heap: Array[Int], index: Int): Array[Int] = {
     //父节点
-    var tempIndex = index
-    var parentIndex = (tempIndex - 1) / 2
-    val temp = heap(tempIndex)
-    import scala.util.control.Breaks._
-    breakable {
-      while (parentIndex >= 0) {
-        if (heap(parentIndex) >= temp) break()
-        val parentTemp = heap(parentIndex)
-        heap(tempIndex) = parentTemp
+    var childIndex = index
+
+    var parentIndex = (childIndex - 1) / 2
+    var temp = heap(childIndex)
+    while (parentIndex >= 0 && childIndex != 0) {
+      if (heap(parentIndex) < temp) {
+        //swap
+        heap(childIndex) = heap(parentIndex)
         heap(parentIndex) = temp
-        tempIndex = parentIndex
-        parentIndex = (tempIndex - 1) / 2
       }
+      childIndex = parentIndex
+      parentIndex = (childIndex - 1) / 2
+      temp = heap(childIndex)
     }
     heap
   }
@@ -58,8 +63,10 @@ object HeapSort extends App {
     * @param sortedHeap 已排序的队列
     * @param index      索引值
     */
-  def deleteFromHeap(sortedHeap: Array[Int], index: Int): Unit = {
-
+  def deleteFromHeap(sortedHeap: Array[Int], index: Int): Array[Int] = {
+    val newArray = sortedHeap.toBuffer
+    newArray.remove(index)
+    generateHeap(newArray.toArray)
   }
 
 
@@ -82,15 +89,24 @@ object HeapSort extends App {
     //    }
   }
 
+  private def sortAll = {
+    while (sortedList.length > 0) {
+      print(s"${sortedList.head} ")
+      sortedList = generateHeap(sortedList.tail)
+      //    printlnList(sortedList)
+    }
+  }
+
   val list = Array[Int](1, 4, 3, 5, 6, 8, 2, 3, 89, 4, 34, 50)
   var sortedList = generateHeap(list)
-  //  printlnList(sortedList)
-  //  printlnList(insertToHeap(sortedList, 76))
-  //  val list1 = Array[Int](1, 4, 3, 5, 6, 8, 2, 3, 89, 4, 34, 50, 76)
-  //  printlnList(generateHeap(list1))
+  printlnList(sortedList)
+  //添加新元素
+  printlnList(insertToHeap(sortedList, 76))
 
-  while (sortedList.length > 0) {
-    print(s"${sortedList.head} ")
-    sortedList = generateHeap(sortedList.tail)
-  }
+  //删除
+  printlnList(deleteFromHeap(sortedList, 3))
+  //堆排序,按大到小输出元素
+  sortAll
+
+
 }
