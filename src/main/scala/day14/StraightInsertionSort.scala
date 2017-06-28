@@ -9,7 +9,7 @@ object StraightInsertionSort extends App with Utils {
 
   /**
     *
-    * 普通模式,时间复杂度O(n)
+    * 普通模式,时间复杂度O(n2)
     *
     * @param list
     * @return
