@@ -16,6 +16,7 @@ object ShellSort extends App with Utils {
       for (i <- 0 until step) {
         //某个子数组采用插入排序算法进行排序
         for (j <- i + step to(unSort.size - 1, step)) {
+          //直接插入排序
           if (unSort(j) < unSort(j - step)) {
             var k = j - step
             while (k > 0 && unSort(k + step) < unSort(k)) {
@@ -23,7 +24,6 @@ object ShellSort extends App with Utils {
               k -= step
             }
           }
-
         }
       }
       step /= 2
