@@ -5,7 +5,7 @@ package day14
   * Created by doctorq on 2017/6/19.
   * 冒泡排序:外层控制次数,内层替换
   */
-object BubbleSort extends App {
+object BubbleSort extends App with Utils {
 
 
   def sort(unSort: Array[Int]): Array[Int] = {
@@ -26,8 +26,5 @@ object BubbleSort extends App {
   val list = Array[Int](1, 4, 3, 5, 6, 8, 2, 3, 89, 4, 34, 50)
 
   val sortedList = sort(list)
-
-  sortedList.foreach(item => print(s"$item "))
-
-
+  printlnArray(sortedList)
 }

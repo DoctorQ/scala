@@ -5,7 +5,7 @@ package day14
   * Created by doctorq on 2017/6/26.
   * 直接插入排序,首先以a[0]作为一个有序数组，然后依次插入a[1]~a[n-1]
   */
-object StraightInsertionSort extends App {
+object StraightInsertionSort extends App with Utils {
 
   /**
     *
@@ -30,26 +30,8 @@ object StraightInsertionSort extends App {
     list
   }
 
-  /**
-    * 将left和right两个位置的数互换
-    *
-    * @param list
-    * @param left
-    * @param right
-    */
-  def swap(list: Array[Int], left: Int, right: Int): Unit = {
-    val temp = list(left)
-    list(left) = list(right)
-    list(right) = temp
-  }
-
-
-  def printlnList(sortedHeap: Array[Int]): Unit = {
-    sortedHeap.foreach(item => print(s"$item "))
-    println("sorted!")
-  }
 
   val list = Array(15, 4, 3, 23, 5, 6, 7, 34, 6, 7, 3, 5, 7, 8, 3, 4, 6, 8, 3, 5, 7)
-  printlnList(list.sorted)
-  printlnList(sortN2(list))
+  printlnArray(list.sorted)
+  printlnArray(sortN2(list))
 }

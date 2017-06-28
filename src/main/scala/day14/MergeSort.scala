@@ -6,7 +6,7 @@ import scala.collection.mutable.ArrayBuffer
   * Created by doctorq on 2017/6/26.
   * 归并排序
   */
-object MergeSort extends App {
+object MergeSort extends App with Utils {
   /**
     * 2个有序数组合并，O(n)时间复杂度
     *
@@ -56,14 +56,11 @@ object MergeSort extends App {
     mergeArray(left, right)
   }
 
-  def printlnList(sortedHeap: ArrayBuffer[Int]): Unit = {
-    sortedHeap.foreach(item => print(s"$item "))
-    println("sorted!")
-  }
+
 
   val list = ArrayBuffer(15, 4, 3, 23, 5, 6, 7, 34, 6, 7, 3, 5, 7, 8, 3, 4, 6, 8, 3, 5, 7)
 
   val sortedList = mergeSort(list)
 
-  printlnList(sortedList)
+  printlnArrayBuffer(sortedList)
 }

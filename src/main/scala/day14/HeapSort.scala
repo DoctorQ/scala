@@ -10,7 +10,7 @@ import scala.collection.mutable.ArrayBuffer
   * 重要特性：1.根节点索引值为i，根节点元素满足Key[i]>=Key[2i+1]&&key>=key[2i+2]
   * 2.非叶子节点数量<=总节点数的/2
   */
-object HeapSort extends App {
+object HeapSort extends App with Utils {
 
 
   /**
@@ -81,13 +81,7 @@ object HeapSort extends App {
     sort(newList, newList.length - 1)
   }
 
-  def printlnList(sortedHeap: Array[Int]): Unit = {
-    sortedHeap.foreach(item => print(s"$item "))
-    println("sorted!")
-    //    for (k <- sortedHeap.indices) {
-    //      println(s"($k->${sortedHeap(k)})")
-    //    }
-  }
+
 
   private def sortAll = {
     while (sortedList.length > 0) {
@@ -99,12 +93,12 @@ object HeapSort extends App {
 
   val list = Array[Int](1, 4, 3, 5, 6, 8, 2, 3, 89, 4, 34, 50)
   var sortedList = generateHeap(list)
-  printlnList(sortedList)
+  printlnArray(sortedList)
   //添加新元素
-  printlnList(insertToHeap(sortedList, 76))
+  printlnArray(insertToHeap(sortedList, 76))
 
   //删除
-  printlnList(deleteFromHeap(sortedList, 3))
+  printlnArray(deleteFromHeap(sortedList, 3))
   //堆排序,按大到小输出元素
   sortAll
 
