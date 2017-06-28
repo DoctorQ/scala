@@ -1,8 +1,6 @@
 package day14
 
 
-import scala.collection.mutable.ArrayBuffer
-
 /**
   * Created by doctorq on 2017/6/26.
   * 直接插入排序,首先以a[0]作为一个有序数组，然后依次插入a[1]~a[n-1]
@@ -11,7 +9,7 @@ object StraightInsertionSort extends App {
 
   /**
     *
-    * 普通模式,时间复杂度O(n2)
+    * 普通模式,时间复杂度O(n)
     *
     * @param list
     * @return
@@ -19,41 +17,32 @@ object StraightInsertionSort extends App {
   def sortN2(list: Array[Int]): Array[Int] = {
     val size = list.size
     if (size <= 1) return list
-    //从小到大
-    val sortedArray = new Array[Int](size)
-    sortedArray(0) = list(0)
-
-    import scala.util.control.Breaks._
-
+    //从小到大排序
     for (i <- 1 until size) {
-      val currentItem = list(i)
-      if (currentItem > sortedArray(i - 1)) {
-        //唯一不需要后移的是当前数大于已排序队列的最后一个数
-        sortedArray(i) = currentItem
-      } else {
-        breakable {
-          for (j <- 0 until i) {
-            if (sortedArray(j) > currentItem) {
-              //j位置后面(包括j)的元素全部后移一位
-              val temp = sortedArray.clone()
-              for (k <- j until i) {
-                sortedArray(k + 1) = temp(k)
-              }
-              //j位置填充a[i]
-              sortedArray(j) = currentItem
-              break()
-            }
-          }
+      if (list(i) < list(i - 1)) {
+        var j = i
+        while (j >= 1 && list(j) < list(j - 1)) {
+          swap(list, j - 1, j)
+          j -= 1
         }
       }
     }
-    sortedArray
+    list
   }
 
-
-  def sortN(list: Array[Int]): Unit = {
-
+  /**
+    * 将left和right两个位置的数互换
+    *
+    * @param list
+    * @param left
+    * @param right
+    */
+  def swap(list: Array[Int], left: Int, right: Int): Unit = {
+    val temp = list(left)
+    list(left) = list(right)
+    list(right) = temp
   }
+
 
   def printlnList(sortedHeap: Array[Int]): Unit = {
     sortedHeap.foreach(item => print(s"$item "))
