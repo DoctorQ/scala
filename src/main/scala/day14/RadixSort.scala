@@ -111,6 +111,5 @@ object RadixSort extends Utils with App {
   val digit = getDigit(max(array))
   printlnArray(sort(array, digit))
 
-  println("debug")
 
 }
