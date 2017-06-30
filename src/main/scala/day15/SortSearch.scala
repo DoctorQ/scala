@@ -6,4 +6,5 @@ package day15
   */
 class SortSearch {
 
+
 }
