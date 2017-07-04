@@ -62,6 +62,24 @@ object BinaryTreeSearch extends App {
 
   }
 
+  /**
+    * 从二叉树中查找指定值的节点并返回
+    * 递归的方式
+    *
+    * @param node 根节点
+    * @param value
+    */
+  def searchNode(node: BinaryTreeNode, value: Int): Option[BinaryTreeNode] = {
+
+    if (value == node.value) {
+      return Some(node)
+    } else if (value < node.value && node.left != None) {
+      return searchNode(node.left.get, value)
+    } else if (value > node.value && node.right != None) {
+      return searchNode(node.right.get, value)
+    }
+    None
+  }
 
   var rootNode = new BinaryTreeNode(15)
   val list = List(1, 4, 5, 2, 3, 8, 54, 23, 21, 43, 10, 13)
@@ -70,16 +88,23 @@ object BinaryTreeSearch extends App {
     rootNode.buildTree(new BinaryTreeNode(item))
   })
 
-  println("先序")
+  //  println("先序")
+  //
+  //  perOrder(rootNode)
+  //
+  //  println("中序")
+  //
+  //  inOrder(rootNode)
+  //
+  //  println("后序")
+  //
+  //  postOrder(rootNode)
 
-  perOrder(rootNode)
+  val result1 = searchNode(rootNode, 1)
 
-  println("中序")
-
-  inOrder(rootNode)
-
-  println("后序")
-
-  postOrder(rootNode)
+  result1 match {
+    case None => println("未发现")
+    case node => node.get.printNode()
+  }
 
 }

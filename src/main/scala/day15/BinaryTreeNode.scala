@@ -24,4 +24,8 @@ class BinaryTreeNode(val value: Int) {
       }
     }
   }
+
+  def printNode(): Unit = {
+    println(s"$value")
+  }
 }
