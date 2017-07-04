@@ -82,23 +82,23 @@ object BinaryTreeSearch extends App {
   }
 
   var rootNode = new BinaryTreeNode(15)
-  val list = List(1, 4, 5, 2, 3, 8, 54, 23, 21, 43, 10, 13)
+  val list = List(1, 4, 5, 2, 3, 8, 54, 23, 21, 43, 10, 13).sorted
 
   list.foreach(item => {
     rootNode.buildTree(new BinaryTreeNode(item))
   })
 
-  //  println("先序")
-  //
-  //  perOrder(rootNode)
-  //
-  //  println("中序")
-  //
-  //  inOrder(rootNode)
-  //
-  //  println("后序")
-  //
-  //  postOrder(rootNode)
+  println("先序")
+
+  perOrder(rootNode)
+
+  println("中序")
+
+  inOrder(rootNode)
+
+  println("后序")
+
+  postOrder(rootNode)
 
   val result1 = searchNode(rootNode, 1)
 
