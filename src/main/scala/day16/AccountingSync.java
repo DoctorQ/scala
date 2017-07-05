@@ -5,13 +5,13 @@ package day16;
  * 讲解synchronized
  */
 public class AccountingSync implements Runnable {
-    static AccountingSync instance = new AccountingSync();
+
     static int i = 0;
 
 
     @Override
     public void run() {
-        synchronized (instance) {
+        synchronized (this) {
             for (int j = 0; j < 1000000; j++) {
                 i++;
             }
@@ -19,6 +19,7 @@ public class AccountingSync implements Runnable {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        AccountingSync instance = new AccountingSync();
         Thread t1 = new Thread(instance);
         Thread t2 = new Thread(instance);
         t1.start();
