@@ -8,7 +8,7 @@ object SortSearch extends App {
 
   def search(array: Array[Int], find: Int): Unit = {
     if (array.size == 0) return
-    println(s"I want to find ${find} : ")
+    println(s"I want to find ${find}: ")
     val findArray = for (i <- 0 until array.length if (array(i) == find)) yield array(i)
     if (findArray.size != 0) {
       println(s"yes, I find it")
