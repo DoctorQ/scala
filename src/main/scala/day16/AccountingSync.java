@@ -22,8 +22,9 @@ public class AccountingSync implements Runnable {
 
     public static void main(String[] args) throws InterruptedException {
         AccountingSync instance = new AccountingSync();
+        AccountingSync instance1 = new AccountingSync();
         Thread t1 = new Thread(instance);
-        Thread t2 = new Thread(instance);
+        Thread t2 = new Thread(instance1);
         t1.start();
         t2.start();
         t1.join();
