@@ -19,16 +19,17 @@ object BinarySearch extends Utils with App {
     }
 
     printlnArray(unSorted)
-    val flag = unSorted(size / 2)
+    val index = size / 2
+    val flag = unSorted(index)
 
     if (find == flag) {
-      println(s"find ${size / 2}")
+      println(s"find ${index}")
       return
     } else if (find > flag) {
-      val right = subArray(unSorted, size / 2 + 1, size - 1)
+      val right = subArray(unSorted, index + 1, size - 1)
       search(right, find)
     } else {
-      val left = subArray(unSorted, 0, size / 2 - 1)
+      val left = subArray(unSorted, 0, index - 1)
       search(left, find)
     }
   }
