@@ -18,11 +18,13 @@ public class InterruputThread2 {
                     }
                 }
                 System.out.println("已跳出循环,线程中断!");
+                System.out.println(this.isInterrupted());
             }
         };
         t1.start();
         TimeUnit.SECONDS.sleep(2);
         t1.interrupt();
+        System.out.println(t1.isInterrupted());
 
     }
 }
