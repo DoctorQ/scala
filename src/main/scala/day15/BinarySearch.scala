@@ -11,7 +11,7 @@ import scala.collection.mutable.ArrayBuffer
 object BinarySearch extends Utils with App {
 
 
-  def sort(unSorted: Array[Int], find: Int): Unit = {
+  def search(unSorted: Array[Int], find: Int): Unit = {
     val size = unSorted.size
     if (size == 0) {
       println(s"${find} no find")
@@ -26,10 +26,10 @@ object BinarySearch extends Utils with App {
       return
     } else if (find > flag) {
       val right = subArray(unSorted, size / 2 + 1, size - 1)
-      sort(right, find)
+      search(right, find)
     } else {
       val left = subArray(unSorted, 0, size / 2 - 1)
-      sort(left, find)
+      search(left, find)
     }
   }
 
@@ -43,6 +43,6 @@ object BinarySearch extends Utils with App {
 
   val list = Array(1, 3, 4, 2, 5, 5, 6, 9, 3, 4, 4)
 
-  sort(list.sorted, 9)
+  search(list.sorted, 9)
 
 }
