@@ -8,7 +8,11 @@ public class AccountingSync implements Runnable {
 
     static int i = 0;
 
-    public synchronized void increate() {
+    public static synchronized void increate() {
+        i++;
+    }
+
+    public synchronized void increate2() {
         i++;
     }
 
