@@ -29,7 +29,13 @@ object FbonacciSearch extends App with Utils {
     array
   }
 
-
+  /**
+    * 迭代的方式
+    *
+    * @param unSort
+    * @param find
+    * @return
+    */
   def search(unSort: Array[Int], find: Int): Int = {
     //获取fbonacci数组下标
     val fbonacciArray = createFbonacci(20)
