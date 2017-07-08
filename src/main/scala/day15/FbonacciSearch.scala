@@ -46,7 +46,7 @@ object FbonacciSearch extends App with Utils {
       k += 1
     }
     val length = fbonacciArray(k) - 1
-    println(s"fbonacci length : ${length}")
+    println(s"new array's length : ${length}")
 
 
     val newArray = new Array[Int](length)
