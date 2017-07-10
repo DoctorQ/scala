@@ -12,7 +12,7 @@ object BlockSearch extends App with Utils {
   /**
     * 获取索引表
     *
-    * @param unSort
+    * @param search
     * @param sizePerBlock 每个块的数据最大个数
     * @return
     */

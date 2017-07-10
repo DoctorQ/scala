@@ -1,7 +1,5 @@
 package day2
 
-import com.doctorq.day1.User
-
 import scala.collection.mutable.ArrayBuffer
 
 /**

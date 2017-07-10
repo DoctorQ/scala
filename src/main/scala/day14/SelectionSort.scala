@@ -1,7 +1,5 @@
 package day14
 
-import day14.StraightInsertionSort.{printlnArray, sortN2}
-
 /**
   * Created by doctorq on 2017/6/28.
   * 选择排序

@@ -1,10 +1,6 @@
 package day15
 
-
 import day14.Utils
-import day15.BinarySearch.printlnArray
-
-import scala.collection.mutable.ArrayBuffer
 
 /**
   * Created by doctorq on 2017/6/30.

@@ -1,7 +1,5 @@
 package day15
 
-import scala.collection.mutable.ArrayBuffer
-
 /**
   * Created by doctorq on 2017/6/30.
   * 哈希查找
