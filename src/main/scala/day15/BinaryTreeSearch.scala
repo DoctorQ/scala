@@ -70,7 +70,6 @@ object BinaryTreeSearch extends App {
     * @param value
     */
   def searchNode(node: BinaryTreeNode, value: Int): Option[BinaryTreeNode] = {
-
     if (value == node.value) {
       return Some(node)
     } else if (value < node.value && node.left != None) {
