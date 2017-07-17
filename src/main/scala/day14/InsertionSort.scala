@@ -4,8 +4,9 @@ package day14
 /**
   * Created by doctorq on 2017/6/26.
   * 直接插入排序,首先以a[0]作为一个有序数组，然后依次插入a[1]~a[n-1]
+  * 时间复杂度:n平方
   */
-object StraightInsertionSort extends App with Utils {
+object InsertionSort extends App with Utils {
 
   /**
     *
@@ -14,7 +15,7 @@ object StraightInsertionSort extends App with Utils {
     * @param list
     * @return
     */
-  def sortN2(list: Array[Int]): Array[Int] = {
+  def sort(list: Array[Int]): Array[Int] = {
     val size = list.size
     if (size <= 1) return list
     //从小到大排序
@@ -33,5 +34,5 @@ object StraightInsertionSort extends App with Utils {
 
   val list = Array(15, 4, 3, 23, 5, 6, 7, 34, 6, 7, 3, 5, 7, 8, 3, 4, 6, 8, 3, 5, 7)
   printlnArray(list.sorted)
-  printlnArray(sortN2(list))
+  printlnArray(sort(list))
 }
