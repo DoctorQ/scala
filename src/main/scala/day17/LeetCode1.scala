@@ -10,11 +10,12 @@ object TwoSum extends Utils with App {
 
   def twoSum(nums: Array[Int], target: Int): Array[Int] = {
     val result = new Array[Int](2)
+    var temp = nums
+
 
     for (i <- 0 until nums.length) {
-      val other = target - nums(i)
-      for (j <- 0 until nums.length) {
-        if (i != j && other == nums(j)) {
+      for (j <- i + 1 until nums.length) {
+        if (target - nums(i) == nums(j)) {
           result(0) = i
           result(1) = j
           return result

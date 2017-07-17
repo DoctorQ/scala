@@ -5,14 +5,15 @@ package day14
   * Created by doctorq on 2017/6/19.
   * 堆排序：采用大顶堆,根节点大于两层元素，该类需要满足具备三个方法: 1.由正常数组变换为符合堆结构的方法
   * 2.向堆中插入数据。3.从堆中删除数据。
-  * 重要特性：1.根节点索引值为i，根节点元素满足Key[i]>=Key[2i+1]&&key>=key[2i+2]
+  * 重要特性：1.根节点索引值为i，根节点元素满足Key[i]>=Key[2i+1]&&key[i]>=key[2i+2]
   * 2.非叶子节点数量<=总节点数的/2
+  * 时间复杂度:nlogn
   */
 object HeapSort extends App with Utils {
 
 
   /**
-    * 生成对结构
+    * 生成堆结构
     *
     * @param unSortHeap 任意数组
     * @return 符合堆结构的数组
@@ -20,13 +21,11 @@ object HeapSort extends App with Utils {
   def generateHeap(unSortHeap: Array[Int]): Array[Int] = {
     val num = unSortHeap.length
     if (num <= 1) return unSortHeap
-    var tempUnSortHeap = unSortHeap
 
-
-    for (i <- num / 2 - 1 until num) {
-      tempUnSortHeap = sort(tempUnSortHeap, i)
+    for (i <- num / 2 until num) {
+      sort(unSortHeap, i)
     }
-    tempUnSortHeap
+    unSortHeap
   }
 
   /**
@@ -37,12 +36,12 @@ object HeapSort extends App with Utils {
     * @return 某子树已经排序完
     */
   def sort(heap: Array[Int], index: Int): Array[Int] = {
-    //父节点
+    //孩子节点
     var childIndex = index
 
     var parentIndex = (childIndex - 1) / 2
     var temp = heap(childIndex)
-    while (parentIndex >= 0 && childIndex != 0) {
+    while (parentIndex >= 0 && childIndex > 0) {
       if (heap(parentIndex) < temp) {
         //swap
         heap(childIndex) = heap(parentIndex)
@@ -80,7 +79,6 @@ object HeapSort extends App with Utils {
   }
 
 
-
   private def sortAll = {
     while (sortedList.length > 0) {
       print(s"${sortedList.head} ")
@@ -93,10 +91,10 @@ object HeapSort extends App with Utils {
   var sortedList = generateHeap(list)
   printlnArray(sortedList)
   //添加新元素
-  printlnArray(insertToHeap(sortedList, 76))
+  //  printlnArray(insertToHeap(sortedList, 76))
 
   //删除
-  printlnArray(deleteFromHeap(sortedList, 3))
+  //  printlnArray(deleteFromHeap(sortedList, 3))
   //堆排序,按大到小输出元素
   sortAll
 
