@@ -15,12 +15,11 @@ object InsertSearch extends App with Utils {
       return
     }
     printlnArray(unSorted)
-    val index =
-      (size - 1) * (find - unSorted(0)) / (unSorted(size - 1) - unSorted(0))
+
     var start = 0
     var end = size - 1
     while (start <= end) {
-      val index = end * (find - start) / unSorted(end) - unSorted(start)
+      val index = start + (end - start) * (find - unSorted(start)) / (unSorted(end) - unSorted(start))
       if (unSorted(index) > find) {
         end = index - 1
       } else if (unSorted(index) < find) {

@@ -33,6 +33,7 @@ object BinarySearch extends Utils with App {
         start = index + 1
       } else {
         println(s"${find} in index : ${index}")
+        //        start += 1
         return
       }
     }
@@ -42,6 +43,6 @@ object BinarySearch extends Utils with App {
 
   val list = Array(1, 3, 4, 2, 5, 5, 6, 9, 3, 4, 4)
 
-  search(list.sorted, 8)
+  search(list.sorted, 4)
 
 }
