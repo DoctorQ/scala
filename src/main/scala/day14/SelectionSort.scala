@@ -2,26 +2,26 @@ package day14
 
 /**
   * Created by doctorq on 2017/6/28.
-  * 选择排序
+  * 选择排序,n平方
   */
 object SelectionSort extends Utils with App {
 
 
-  def sort(unSorted: Array[Int]): Array[Int] = {
-    for (i <- 0 until unSorted.size) {
-      var min = unSorted(i)
+  def sort(data: Array[Int]): Array[Int] = {
+    for (i <- 0 until data.size) {
+      var min = data(i)
       var minIndex = i
-      for (j <- i + 1 until unSorted.size) {
-        if (unSorted(j) <= min) {
-          min = unSorted(j)
+      for (j <- i + 1 until data.size) {
+        if (data(j) <= min) {
+          min = data(j)
           minIndex = j
         }
       }
       if (minIndex != i) {
-        swap(unSorted, i, minIndex)
+        swap(data, i, minIndex)
       }
     }
-    unSorted
+    data
   }
 
 

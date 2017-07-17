@@ -4,7 +4,7 @@ import scala.collection.mutable.ArrayBuffer
 
 /**
   * Created by doctorq on 2017/6/26.
-  * 归并排序
+  * 归并排序,nlogn
   */
 object MergeSort extends App with Utils {
   /**

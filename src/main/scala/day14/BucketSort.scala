@@ -2,7 +2,7 @@ package day14
 
 /**
   * Created by doctorq on 2017/6/29.
-  * 桶排序,一直数据范围，比如满分10分考试分数排序
+  * 桶排序,已知数据范围，比如满分10分考试分数排序
   */
 object BucketSort extends Utils with App {
 
