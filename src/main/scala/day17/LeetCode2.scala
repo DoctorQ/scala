@@ -29,27 +29,23 @@ object LeetCode2 extends Utils with App {
         result
       }
       val _x = if (more) {
-        val result = addNum % 10 + 1
-        //如果超过10，继续进位
-        if (result >= 10) {
-          result % 10
-        } else {
-          more = false
-          result
-        }
+        more = false
+        addNum % 10 + 1
       } else {
         addNum % 10
       }
-      if (resultNode == null) {
-        resultNode = new ListNode(_x)
-        temp = resultNode
-      } else {
-        temp.next = new ListNode(_x)
-        temp = temp.next
-      }
-      if (addNum >= 10) {
+      if (addNum >= 10 || _x >= 10) {
         more = true
       }
+
+      if (resultNode == null) {
+        resultNode = new ListNode(_x % 10)
+        temp = resultNode
+      } else {
+        temp.next = new ListNode(_x % 10)
+        temp = temp.next
+      }
+
     }
     if (more) {
       temp.next = new ListNode(1)
@@ -72,8 +68,8 @@ object LeetCode2 extends Utils with App {
   }
 
 
-  val num1 = 432
-  val num2 = 427
+  val num1 = 1
+  val num2 = 99
   val l1 = createNode(num1)
   val l2 = createNode(num2)
   val result = addTwoNumbers(l1, l2)
