@@ -21,14 +21,13 @@ object BlockSearch extends App with Utils {
     //    println(s"分成${blockSize}块")
     //索引表,顺序的
     val indexArray = new Array[Int](blockSize)
-    var i = 0
+    var i = sizePerBlock - 1
     var j = 0
     while (i < array.length) {
-      val maxIndex = i + sizePerBlock - 1
-      if (maxIndex > array.length - 1) {
+      if (i > array.length - 1) {
         indexArray(j) = array(array.length - 1)
       } else {
-        indexArray(j) = array(i + sizePerBlock - 1)
+        indexArray(j) = array(i)
       }
       j += 1
       i += sizePerBlock
