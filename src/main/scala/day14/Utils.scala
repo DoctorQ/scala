@@ -7,18 +7,18 @@ import scala.collection.mutable.ArrayBuffer
   */
 trait Utils {
 
-  def printlnArrayBuffer(sortedHeap: ArrayBuffer[Int]): Unit = {
+  def printlnArrayBuffer[T](sortedHeap: ArrayBuffer[T]): Unit = {
     sortedHeap.foreach(item => print(s"$item "))
     println("sorted!")
 
   }
 
-  def printlnArray(sortedHeap: Array[Int]): Unit = {
+  def printlnArray[T](sortedHeap: Array[T]): Unit = {
     sortedHeap.foreach(item => print(s"$item "))
     println("sorted!")
   }
 
-  def printlnList(sortedHeap: List[Int]): Unit = {
+  def printlnList[T](sortedHeap: List[T]): Unit = {
     sortedHeap.foreach(item => print(s"$item "))
     println("sorted!")
   }
