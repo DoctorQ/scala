@@ -10,47 +10,23 @@ object LeetCode2 extends Utils with App {
   def addTwoNumbers(l1: ListNode, l2: ListNode): ListNode = {
     var firstNode = l1
     var secondNode = l2
-    var resultNode: ListNode = null
-    var temp: ListNode = null
-    var more: Boolean = false
+    val resultNode: ListNode = new ListNode(0)
+    var temp: ListNode = resultNode
+    var carry = 0
     while (firstNode != null || secondNode != null) {
-      val addNum = if (secondNode == null) {
-        val result = firstNode._x
-        firstNode = firstNode.next
-        result
-      } else if (firstNode == null) {
-        val result = secondNode._x
-        secondNode = secondNode.next
-        result
-      } else {
-        val result = firstNode._x + secondNode._x
-        firstNode = firstNode.next
-        secondNode = secondNode.next
-        result
-      }
-      val _x = if (more) {
-        more = false
-        addNum % 10 + 1
-      } else {
-        addNum % 10
-      }
-      if (addNum >= 10 || _x >= 10) {
-        more = true
-      }
-
-      if (resultNode == null) {
-        resultNode = new ListNode(_x % 10)
-        temp = resultNode
-      } else {
-        temp.next = new ListNode(_x % 10)
-        temp = temp.next
-      }
-
+      val firstVal = if (firstNode == null) 0 else firstNode._x
+      val secondVal = if (secondNode == null) 0 else secondNode._x
+      val addNum = carry + firstVal + secondVal
+      carry = addNum / 10
+      temp.next = new ListNode(addNum % 10)
+      temp = temp.next
+      firstNode = if (firstNode != null) firstNode.next else firstNode
+      secondNode = if (secondNode != null) secondNode.next else secondNode
     }
-    if (more) {
-      temp.next = new ListNode(1)
+    if (carry > 0) {
+      temp.next = new ListNode(carry)
     }
-    resultNode
+    resultNode.next
   }
 
   def createNode(digit: Int): ListNode = {
