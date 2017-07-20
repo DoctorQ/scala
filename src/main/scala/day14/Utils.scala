@@ -1,5 +1,7 @@
 package day14
 
+import java.util
+
 import scala.collection.mutable.ArrayBuffer
 
 /**
@@ -21,6 +23,10 @@ trait Utils {
   def printlnList[T](sortedHeap: List[T]): Unit = {
     sortedHeap.foreach(item => print(s"$item "))
     println("sorted!")
+  }
+
+  def printlnIter[T <: Iterator[T]](data: T) {
+    data.foreach(item => println(s"item"))
   }
 
   /**
