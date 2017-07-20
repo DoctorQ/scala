@@ -17,14 +17,37 @@ object SteelCut extends App {
       println("超过价格表范围")
       return -1
     }
-    if (n == 0) return n
-    var q = Integer.MIN_VALUE
 
-    for (i <- 1 to n) {
-      q = Integer.max(q, data(i - 1) + maxValue(data, n - i))
+    val temp = new Array[Int](n)
+    for (i <- 0 until n) {
+      temp(i) = Integer.MIN_VALUE
     }
+    return maxValue2(data, n, temp)
+  }
+
+  /**
+    * 自顶向下,带备忘
+    *
+    * @param data
+    * @param n
+    * @param r
+    * @return
+    */
+  def maxValue2(data: Array[Int], n: Int, r: Array[Int]): Int = {
+    if (n > data.length) {
+      println("超过价格表范围")
+      return -1
+    }
+    if (n == 0) return 0
+    if (r(n - 1) >= 0) return r(n - 1)
+    var q = Integer.MIN_VALUE
+    for (i <- 1 to n) {
+      q = Integer.max(q, data(i - 1) + maxValue2(data, n - i, r))
+    }
+    r(n - 1) = q
     return q
   }
+
 
   val array = Array(1, 5, 8, 9, 10, 17, 17, 20, 24, 30)
 
