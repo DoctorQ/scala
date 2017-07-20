@@ -48,10 +48,34 @@ object SteelCut extends App {
     return q
   }
 
+  /**
+    * 自底向上
+    *
+    * @param data
+    * @param n
+    */
+  def bottomToUp(data: Array[Int], n: Int): Int = {
+    if (n > data.length) {
+      println("超过价格表范围")
+      return -1
+    }
+    if (n == 0) return 0
+    val temp = new Array[Int](n + 1)
+    temp(0) = 0
+    for (i <- 1 to n) {
+      var q = Integer.MIN_VALUE
+      for (j <- 1 to i) {
+        q = Integer.max(q, data(j - 1) + temp(i - j))
+      }
+      temp(i) = q
+    }
+    return temp(n)
+  }
+
 
   val array = Array(1, 5, 8, 9, 10, 17, 17, 20, 24, 30)
 
-  val result = maxValue(array, 10)
+  val result = bottomToUp(array, 10)
 
   println(result)
 
