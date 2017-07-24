@@ -5,29 +5,40 @@ package day17
   */
 object LeetCode5 {
 
+
   def longestPalindrome(s: String): String = {
     if (s.length <= 1) return s
-    var max = ""
+    var start = 0
+    var end = 0
     for (i <- 0 until s.length) {
-      for (j <- i until s.length) {
-        val tempStr = s.substring(i, j + 1)
-        if (tempStr.length > max.length && isPalindrome(tempStr)) {
-          max = tempStr
-        }
+      val len1 = getPlindromeLength(s, i, i)
+      val len2 = getPlindromeLength(s, i, i + 1)
+      val len = Math.max(len1, len2)
+      if (len > end - start) {
+        end = i + len / 2
+        start = i - (len - 1) / 2
       }
+
     }
-    max
+    s.substring(start, end + 1)
   }
 
-  def isPalindrome(s: String): Boolean = {
-    var i = 0
-    while (i < s.length / 2) {
-      if (s.charAt(i) != s.charAt(s.length - 1 - i)) {
-        return false
-      }
-      i += 1
+  /**
+    * 获取回文大小
+    *
+    * @param s
+    * @param left
+    * @param right
+    * @return
+    */
+  def getPlindromeLength(s: String, left: Int, right: Int): Int = {
+    var L = left
+    var R = right
+    while (L >= 0 && R < s.length && s.charAt(L) == s.charAt(R)) {
+      L -= 1
+      R += 1
     }
-    true
+    R - L - 1
   }
 
   def main(args: Array[String]): Unit = {
