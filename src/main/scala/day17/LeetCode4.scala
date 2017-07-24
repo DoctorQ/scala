@@ -2,6 +2,9 @@ package day17
 
 import day14.Utils
 
+/**
+  * https://leetcode.com/problems/median-of-two-sorted-arrays/#/description
+  */
 object LeetCode4 extends Utils {
   /**
     * 2个有序数组合并为一个:如果为基数,中间数为所求。如果是偶数，中间2个数取平均值
@@ -43,7 +46,6 @@ object LeetCode4 extends Utils {
         j += 1
       }
     }
-    printlnArray(result)
     if ((m + n) % 2 == 0) {
       //偶数
       val middle = (m + n) / 2
