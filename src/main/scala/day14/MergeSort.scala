@@ -33,7 +33,6 @@ object MergeSort extends App with Utils {
     } else if (right.size != 0) {
       sortedArray.appendAll(right)
     }
-
     sortedArray
   }
 
