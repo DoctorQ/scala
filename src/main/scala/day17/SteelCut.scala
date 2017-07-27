@@ -22,7 +22,7 @@ object SteelCut extends App {
     for (i <- 0 until n) {
       temp(i) = Integer.MIN_VALUE
     }
-    return maxValue2(data, n, temp)
+    return upToButtom(data, n, temp)
   }
 
   /**
@@ -33,7 +33,7 @@ object SteelCut extends App {
     * @param r
     * @return
     */
-  def maxValue2(data: Array[Int], n: Int, r: Array[Int]): Int = {
+  def upToButtom(data: Array[Int], n: Int, r: Array[Int]): Int = {
     if (n > data.length) {
       println("超过价格表范围")
       return -1
@@ -42,7 +42,7 @@ object SteelCut extends App {
     if (r(n - 1) >= 0) return r(n - 1)
     var q = Integer.MIN_VALUE
     for (i <- 1 to n) {
-      q = Integer.max(q, data(i - 1) + maxValue2(data, n - i, r))
+      q = Integer.max(q, data(i - 1) + upToButtom(data, n - i, r))
     }
     r(n - 1) = q
     return q
@@ -75,7 +75,7 @@ object SteelCut extends App {
 
   val array = Array(1, 5, 8, 9, 10, 17, 17, 20, 24, 30)
 
-  val result = bottomToUp(array, 10)
+  val result = maxValue(array, 10)
 
   println(result)
 
