@@ -1,6 +1,6 @@
 package day17
 
-import day14.Utils
+import day14.{QuickSort, Utils}
 
 /**
   * Created by doctorq on 2017/7/10.
@@ -9,18 +9,22 @@ import day14.Utils
 object TwoSum extends Utils with App {
 
   def twoSum(nums: Array[Int], target: Int): Array[Int] = {
-    val result = new Array[Int](2)
-    var temp = nums
-    for (i <- 0 until nums.length) {
-      for (j <- i + 1 until nums.length) {
-        if (target - nums(i) == nums(j)) {
-          result(0) = i
-          result(1) = j
-          return result
-        }
+    val sortNums = QuickSort.sort(nums)
+    var start = 0
+    var end = nums.length - 1
+    while (start < end) {
+      val left = sortNums(start)
+      val right = sortNums(end)
+      if (left + right == target) {
+        return Array(nums.indexOf(left), nums.indexOf(right))
+      } else if (left + right < target) {
+        start += 1
+      } else {
+        end -= 1
       }
     }
-    result
+
+    Array(-1, -1)
   }
 
   val array = Array(3, 2, 4)
