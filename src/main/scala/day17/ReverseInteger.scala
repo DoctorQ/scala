@@ -3,7 +3,7 @@ package day17
 /**
   * 数字反转：https://leetcode.com/problems/reverse-integer/tabs/description
   */
-object LeetCode7 {
+object ReverseInteger {
 
   def reverse(x: Int): Int = {
     var result: Double = 0

@@ -3,7 +3,7 @@ package day17
 /**
   * https://leetcode.com/problems/zigzag-conversion/#/description
   */
-object LeetCode6 {
+object ZigZagConversion {
   def convert(s: String, numRows: Int): String = {
     if (numRows < 2) return s
     val length = s.length

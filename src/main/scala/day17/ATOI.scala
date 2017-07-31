@@ -3,7 +3,7 @@ package day17
 /**
   * https://leetcode.com/problems/string-to-integer-atoi/tabs/description
   */
-object LeetCode8 {
+object ATOI {
 
   def myAtoi(str: String): Int = {
     if (str.length == 0) return 0

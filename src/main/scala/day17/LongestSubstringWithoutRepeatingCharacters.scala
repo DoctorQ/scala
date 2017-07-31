@@ -7,7 +7,7 @@ import scala.collection.mutable.ArrayBuffer
 /**
   * https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description
   */
-object LeetCode3 extends App with Utils {
+object LongestSubstringWithoutRepeatingCharacters extends App with Utils {
 
 
   def lengthOfLongestSubstring(s: String): Int = {

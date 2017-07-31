@@ -3,7 +3,7 @@ package day17
 /**
   * https://leetcode.com/problems/longest-palindromic-substring/#/description
   */
-object LeetCode5 {
+object LongestPalindromicSubstring {
 
 
   def longestPalindrome(s: String): String = {
