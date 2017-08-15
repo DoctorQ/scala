@@ -34,7 +34,7 @@ object ATOI {
     if (result > Integer.MAX_VALUE) Integer.MAX_VALUE else if (result < Integer.MIN_VALUE) Integer.MIN_VALUE else {
       result.toInt
     }
-  }
+  } 
 
   def main(args: Array[String]): Unit = {
     val s = "  -0012a42"
